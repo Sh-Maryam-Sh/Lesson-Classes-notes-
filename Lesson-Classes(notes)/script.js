@@ -48,3 +48,14 @@ nums.forEach(element => ferrari.drive());
 //console.log(ferrari.currentSpeed)
 ferrari.brake()
 console.log(ferrari.currentSpeed)
+
+// my method
+Array.prototype.mypush = function (item){
+    this[this.length] = item
+    return this
+}
+
+const fruits = ['banana','kiwi','pear']
+console.log(fruits)
+fruits.mypush('apple')
+console.log(fruits)
