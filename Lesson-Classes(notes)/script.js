@@ -65,22 +65,23 @@
 // Object.values(actor)
 
 // add bank class
-
-
 class bank {
 
     constructor(balance){
         this.balance = balance
     }
+
+
     withdraw(amount){
         if(this.balance - amount <= 0){
             console.log(' you cannot withdraw more than what you have!')
-            console.log('deposited',`$${amount}`)
+            console.log({balance : this.balance})
             return
         }
         this.balance -= amount
         console.log('withdrew',`$${amount}`)
         console.log({balance : this.balance})
+        
 
 
     }
@@ -95,11 +96,20 @@ class bank {
 
 const maryamcheckingAccount = new bank(100)
 console.log(maryamcheckingAccount.balance)
-maryamcheckingAccount.deposit(100)
+//maryamcheckingAccount.deposit(100)
 console.log(maryamcheckingAccount.balance)
 
 const depositButton = document.getElementById('deposit')
 const withdrawButton = document.getElementById('withdraw')
 const amountInput = document.getElementById('amount')
+const balanceDiv = document.getElementById('balance')
 
-depositButton.onclick = () =>  maryamcheckingAccount.deposit(Number(amountInput.value))
+depositButton.onclick = () =>  {
+    maryamcheckingAccount.deposit(Number(amountInput.value))
+    balanceDiv.innerText = `Balance : ${maryamcheckingAccount.balance}`
+}
+
+withdrawButton.onclick = () => {
+    maryamcheckingAccount.withdraw(Number(amountInput.value))
+    balanceDiv.innerText = `Balance : ${maryamcheckingAccount.balance}`
+}
